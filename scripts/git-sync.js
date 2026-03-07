@@ -9,8 +9,8 @@ const root = resolve(__dirname, '..');
 
 const argv = process.argv.slice(2);
 let initGit = false;
-let remoteUrl = '';
-let branch = 'main';
+let remoteUrl = process.env.GIT_REMOTE || '';
+let branch = process.env.GIT_BRANCH || 'main';
 let forceRemote = false;
 
 for (let i = 0; i < argv.length; i++) {
