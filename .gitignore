@@ -1,0 +1,11 @@
+node_modules
+broxbhai.zip
+*/dist/*
+vendor
+*.zip
+*.tar.gz
+_backup
+*.log
+storage/*
+
+
