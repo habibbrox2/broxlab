@@ -38,7 +38,10 @@
         "firebase:providers:sync": "node scripts/firebase/activate-firebaseui-providers.mjs",
         "lint": "eslint --config build/eslint.config.cjs \"public_html/assets/js/**/*.js\" \"public_html/assets/firebase/v2/**/*.js\" \"public_html/assets/ai-assistant/**/*.js\" \"build/Scripts/**/*.mjs\" \"build/esbuild.config.js\" \"build/esbuild-firebase.mjs\" \"build/esbuild-assistants.mjs\"",
         "test": "echo \"No tests configured\"",
-        "sync": "node scripts/git-sync.js",
+        "git": "node git-hr/git-helper.cjs",
+        "git-helper": "node git-hr/git-helper.cjs",
+        "branch": "node git-hr/branch-manager.cjs",
+        "sync": "node git-hr/sync-clone.cjs",
         "backup-db": "php scripts/db-backup.php",
         "restore-db": "php scripts/db-restore.php"
     },
@@ -56,7 +59,8 @@
         "@heyputer/puter.js": "^2.2.11",
         "@openrouter/sdk": "^0.9.11",
         "firebase": "^12.9.0",
-        "genkit": "^1.16.1"
+        "genkit": "^1.16.1",
+        "shelljs": "^0.10.0"
     },
     "devDependencies": {
         "esbuild": "^0.27.3",

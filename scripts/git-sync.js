@@ -9,8 +9,9 @@ const root = resolve(__dirname, '..');
 
 const argv = process.argv.slice(2);
 let initGit = false;
-let remoteUrl = process.env.GIT_REMOTE || '';
-let branch = process.env.GIT_BRANCH || 'main';
+// Default remote (set to your repo if not overridden via GIT_REMOTE or --remote)
+let remoteUrl = process.env.GIT_REMOTE || 'https://github.com/habibbrox2/broxlab.git';
+let branch = process.env.GIT_BRANCH || 'master';
 let forceRemote = false;
 
 for (let i = 0; i < argv.length; i++) {
@@ -136,8 +137,20 @@ try {
     const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
     run(`git commit -m "auto: backup + sync ${timestamp}"`);
 
-    // 7) Push
-    run('git push');
+    // 7) Push (attempt to keep remote in sync)
+    try {
+        run('git push');
+    } catch (pushErr) {
+        console.warn('⚠️ Push failed, trying to rebase onto remote and push again...');
+        try {
+            run(`git pull --rebase origin ${branch}`);
+            run('git push');
+        } catch (rebaseErr) {
+            console.error('❌ Push still failed after rebase:');
+            console.error(rebaseErr.message);
+            process.exit(1);
+        }
+    }
 
     console.log('\n✅ Sync complete.');
 } catch (err) {

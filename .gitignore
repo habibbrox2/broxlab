@@ -1,11 +1,42 @@
-node_modules
-broxbhai.zip
-*/dist/*
-vendor
+# Node / PHP dependencies
+node_modules/
+vendor/
+
+# Build artifacts
+/dist/
+/public_html/assets/**/dist/
+
+# Local runtime storage
+/storage/
+
+# Local database backups / exports
+/Database/backups/
+/Database/exports/
+
+# Uploads (user data)
+/app/uploads/
+/public_html/uploads/
+
+# Environment files
+.env
+.env.local
+
+# Logs
+*.log
+
+# Archives
 *.zip
 *.tar.gz
-_backup
-*.log
-storage/*
+broxbhai.zip
 
+# Backups
+_backup/
 
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor temp files
+*.swp
+*.swo
+*~
