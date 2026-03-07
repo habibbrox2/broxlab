@@ -40,6 +40,7 @@
         "test": "echo \"No tests configured\"",
         "git": "node git-hr/git-helper.cjs",
         "git-helper": "node git-hr/git-helper.cjs",
+        "clone": "node git-hr/git-helper.cjs clone",
         "branch": "node git-hr/branch-manager.cjs",
         "sync": "node git-hr/sync-clone.cjs",
         "backup-db": "php scripts/db-backup.php",
